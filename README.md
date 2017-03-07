@@ -1,10 +1,8 @@
 # Boilerplate code to use Phoenix in a Docker container
 
 How to use:
-  * create app folder and copy boilerplate files into the folder
-  * adjust/replace settings in `docker/build/Dockerfile`
-  * run `docker-compose build`
-  * run `docker-compose run web mix phoenix.new . --app <app_name>` (<app_name> should match with your app folder); confirm all questions with 'Y'
+  * create app folder and copy boilerplate files into the folder    
+  * run `docker-compose run --rm web mix phoenix.new . --app <app_name>` (<app_name> should match with your app folder); confirm all questions with 'Y'
   * open `config/dev.exs` and replace the database configs with:
 
   ```elixir

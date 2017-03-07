@@ -1,20 +1,23 @@
-web:
-  build: .
-  dockerfile: docker/build/Dockerfile
-  command: bash docker/start.sh
-  environment:
-    - MIX_ENV=dev
-    - DB_HOST=db
-    - DB_USER=db_user
-    - DB_DATABASE=db_name_dev
-  volumes:
-    - .:/app
-  ports:
-    - "4000:4000"
-  links:
-    - db
+version: '3'
 
-db:
-  image: postgres:latest # https://hub.docker.com/_/postgres/
-  environment:
-    POSTGRES_USER: db_user
+services:
+  web:
+    build:
+      context: docker/build
+    command: bash docker/start.sh
+    environment:
+      - MIX_ENV=dev
+      - DB_HOST=db
+      - DB_USER=db_user
+      - DB_DATABASE=db_name_dev
+    volumes:
+      - .:/app
+    ports:
+      - "4000:4000"
+    links:
+      - db
+
+  db:
+    image: postgres:latest # https://hub.docker.com/_/postgres/
+    environment:
+      POSTGRES_USER: db_user
